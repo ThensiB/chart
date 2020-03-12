@@ -1,0 +1,102 @@
+<html>
+<body>
+
+<div id="pie" draggable="true" ondragstart="drag(event)"></div>
+<style>
+  .arc text {
+  font: 10px sans-serif;
+  text-anchor: middle;
+}
+ 
+.arc path {
+  stroke: #fff;
+}
+
+</style>
+<script src="https://d3js.org/d3.v3.min.js"></script>
+ 
+<script>
+var width = 960,
+    height = 500,
+    radius = Math.min(width, height) / 2;
+ 
+var color = d3.scale.ordinal()
+  .range(["#98abc5", "#8a89a6", "#7b6888", "#6b486b", "#a05d56", "#d0743c", "#ff8c00"]);
+ 
+var arc = d3.svg.arc()
+    .outerRadius(radius - 10)
+    .innerRadius(radius-80);
+
+var arc1 = d3.svg.arc()
+    .outerRadius(radius - 10)
+    .innerRadius(radius-80);
+ 
+var labelArc = d3.svg.arc()
+    .outerRadius(radius - 40)
+    .innerRadius(radius - 40);
+ 
+var pie = d3.layout.pie()
+    .sort(null)
+    .value(function(d) { return d; });
+	
+var pie1 = d3.layout.pie()
+    .sort(null)
+    .value(function(d) { return d; });
+ 
+var svg = d3.select("#pie").append("svg")
+    .attr("width", width)
+    .attr("height", height)
+  .append("g")
+    .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
+	
+var svg1 = d3.select("#pie").append("svg")
+    .attr("width", width)
+    .attr("height", height)
+  .append("g")
+    .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
+ 
+function draw(data) {
+  var g = svg.selectAll(".arc")
+      .data(pie(data))
+    .enter().append("g")
+      .attr("class", "arc");
+ 
+  g.append("path")
+      .attr("d", arc)
+      .style("fill", function(d) { return color(d.data * Math.random() ); });
+ 
+}
+
+function draw1(data) {
+  var g = svg1.selectAll(".arc1")
+      .data(pie1(data))
+    .enter().append("g")
+      .attr("class", "arc1");
+ 
+  g.append("path")
+      .attr("d", arc1)
+      .style("fill", function(d) { return color(d.data * Math.random() ); });
+ 
+}
+
+ 
+var randomValuedArray = function(length, max) {
+  return Array.apply(null, Array(length)).map(function(_, i) {
+        return Math.round(Math.random() * max);
+    });
+}
+var fixedValuedArray = function(length, fill) {
+  return Array.apply(null, Array(length)).map(function(_, i) {
+        return fill
+    });
+}
+draw1(randomValuedArray(16, 15)); //Uncomment this line to see random length arcs
+draw(fixedValuedArray(16, 15));
+
+function drag(ev) {
+  ev.dataTransfer.setData("text", ev.target.id);
+}
+
+</script>
+</body>
+</html>
