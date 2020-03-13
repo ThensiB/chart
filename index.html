@@ -1,0 +1,61 @@
+<?php Header("Cache-Control: max-age=3000, must-revalidate"); ?>
+
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+        <meta http-equiv="Pragma" content="no-cache" />
+        <meta http-equiv="Expires" content="0" />
+        <title>Speech to text conversion using JavaScript</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="styles.css">
+        <link rel="stylesheet" href="style.css">
+        <link href="https://fonts.googleapis.com/css?family=Shadows+Into+Light" rel="stylesheet">
+
+    </head>
+
+    <body>
+
+	<div class="menu">
+<ul>
+	<li id="start-btn"><a href="#"><span class="fa fa-microphone">Give Command</span></a></li>
+	<li><a href=""><span class="fa fa-image">Charts</span></a>
+		<ul>
+		<li id='gauge'><a href="gauge.html">Gauge chart</a></li>
+		<li id='pie'><a href="pie.html">Pie chart</a></li>
+		<li id='radar'><a href="radar.html">Radar chart</a></li>
+		</ul></li>
+	<li><a href=""><span class="fa fa-desktop">Dimensions</span></a>
+		<ul>	<li id='tot'><a href="">Total Revenue</a></li>
+			<li id='avg'><a href="">Average Revenue</a></li>
+			<li id='pro'><a href="">Profit</a></li>
+		</ul></li>
+	<li><a href=""><span class="fa fa-paint-brush">Color</span></a>
+	<ul>	<li type="color"><a href="">Text</a>
+			<ul><li><input type="color" id="mycolor" onclick="myFunction()"></li>
+			</ul></li>
+			<li><a href="">Combo</a>
+			<ul><li><input type="color" id="mycolor" onclick="myFunction()"></li>
+			</ul></li></li>
+		</ul>
+</li></ul>
+</div>
+        <div class="mycontainer">
+
+            <h1>Speech to text conversion using JavaScript</h1>
+
+            <div class="mywebapp"> 
+                <div class="input">
+                    <textarea id="textbox" rows="6"></textarea>
+                </div>        
+            </div>
+        </div>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="script.js"></script>
+    </body>
+</html>

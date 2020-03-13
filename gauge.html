@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+<meta charset="UTF-8">
+<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="styles.css">
+
+   <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+   <script type="text/javascript">
+      google.charts.load('current', {'packages':['gauge']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+
+        var data = google.visualization.arrayToDataTable([
+          ['Label', 'Value'],
+          ['Total Revenue',21]
+        ]);
+
+        var options = {
+          width: 1000, height: 500,
+          redFrom: 90, redTo: 100,
+          yellowFrom:75, yellowTo: 90,
+          minorTicks: 5
+        };
+
+        var chart = new google.visualization.Gauge(document.getElementById('chart_div'));
+
+        chart.draw(data, options);
+
+        setInterval(function() {
+          data.setValue(0, 1, 21+5);
+          chart.draw(data, options);
+        }, 13000);
+      }
+    </script>
+  </head>
+  <body>
+  <div class="clearfix">
+<div class="menu">
+<ul>
+	<li id="givecmd"><a href="#"><span class="fa fa-microphone">Give Command</span></a></li>
+	<li><a href=""><span class="fa fa-image">Charts</span></a>
+		<ul>
+		<li id='gauge'><a href="gauge.html">Gauge chart</a></li>
+		<li id='pie'><a href="pie.html">Pie chart</a></li>
+		<li id='radar'><a href="radar.html">Radar chart</a></li>
+		</ul></li>
+	<li><a href=""><span class="fa fa-desktop">Dimensions</span></a>
+		<ul>	<li id='tot'><a href="">Total Revenue</a></li>
+			<li id='avg'><a href="">Average Revenue</a></li>
+			<li id='pro'><a href="">Profit</a></li>
+		</ul></li>
+	<li><a href=""><span class="fa fa-paint-brush">Color</span></a></li></ul>
+</div>
+    <div id="chart_div" style="width: 1500px; height: 1000px;"></div>
+  </div>
+  
+  </body>
+</html>
